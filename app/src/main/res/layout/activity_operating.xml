@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Operating">
+
+    <TextView
+        android:id="@+id/text_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="152"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/list_scroll"
+        android:layout_width="258dp"
+        android:layout_height="317dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="35dp"
+        android:textFilterEnabled="false"
+        app:layout_constraintEnd_toStartOf="@+id/button_add_seat"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_company_name" />
+
+    <Button
+        android:id="@+id/button_add_seat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:text="加添座位"
+        app:layout_constraintBottom_toTopOf="@+id/button_remove_seat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_show_quantity"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <Button
+        android:id="@+id/button_remove_seat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="移除座位"
+        app:layout_constraintBottom_toBottomOf="@+id/list_scroll"
+        app:layout_constraintEnd_toEndOf="@+id/button_add_seat"
+        app:layout_constraintStart_toStartOf="@+id/button_add_seat" />
+
+    <TextView
+        android:id="@+id/text_show_quantity"
+        android:layout_width="153dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/button_add_seat"
+        app:layout_constraintStart_toStartOf="@+id/button_add_seat"
+        app:layout_constraintTop_toTopOf="@+id/list_scroll" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

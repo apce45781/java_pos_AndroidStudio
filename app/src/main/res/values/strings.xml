@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">pos</string>
+    <string name="please_enter_account">請輸入帳號</string>
+    <string name="please_enter_password">請輸入密碼</string>
+    <string name="sign_in">登入</string>
+    <string name="leave">離開</string>
+    <string name="apply_for_an_account">申請帳號</string>
+    <string name="forget_password">忘記密碼</string>
+    <string name="account">帳號</string>
+    <string name="password">密碼</string>
+    <string name="password_again">密碼確認</string>
+</resources>
