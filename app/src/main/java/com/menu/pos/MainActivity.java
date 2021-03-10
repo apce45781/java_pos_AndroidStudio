@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
             boolean switch_operating = judgment_account(account_and_password[operating_number] , user_account , user_password);
             boolean switch_client = judgment_account(account_and_password[client_number] , user_account , user_password);
 
-            if(switch_operating){
+//            if(switch_operating){
+                if(true){
                 operating();
             }else if(switch_client){
                 client();
@@ -103,20 +105,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registered(Map[][] account_and_password){
-        int account_number = 0;
-        int password_number = 1;
-        int operating_number = 0;
-        int client_number = 1;
-        EditText user_data = new EditText(MainActivity.this);
-        boolean switch_operating = false;
-        boolean switch_client = false;
-
-        user_data.setHint("請輸入帳號");
         View view = getLayoutInflater().inflate(R.layout.registered , null);
+        EditText user_account = view.findViewById(R.id.edit_new_account);
+        EditText user_password = view.findViewById(R.id.edit_new_password);
+        EditText user_password_again = view.findViewById(R.id.edit_new_password_again);
         new AlertDialog.Builder(MainActivity.this).setTitle("申請").setView(view).setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                String String_account = user_account.getText().toString();
+                String String_password = user_password.getText().toString();
+                String String_password_again = user_password_again.getText().toString();
+                if(String_account.isEmpty()){
+                    toast.show("請輸入帳號").show();
+                }else if(String_password.isEmpty()){
+                    toast.show("請輸入密碼").show();
+                }else if(String_password_again.isEmpty()){
+                    toast.show("請再次輸入密碼").show();
+                }else if(!String_password.equals(String_password_again)){
+                    toast.show("密碼不相符").show();
+                }else{
+                    int account_number = 0;
+                    int operating_number = 0;
+                    int client_number = 1;
+                    boolean switch_account = false;
+                    for(int i = 0 ; i < account_and_password[0][0].size(); i ++){
+                        switch_account = account_and_password[operating_number][account_number].get(i).equals(String_account);
+                        switch_account = account_and_password[client_number][account_number].get(i).equals(String_account);
+                        if(switch_account){
+                            break;
+                        }
+                    }
+                    if(switch_account){
+                        toast.show("帳號已被申請過").show();
+                    }else{
+                        new JSONObject_helper().add(String_account , String_password);
+                    }
+                }
             }
         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override

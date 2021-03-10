@@ -4,10 +4,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,6 +58,17 @@ public class JSONObject_helper {
             e.printStackTrace();
         }finally {
             return new Map[][]{{operating_account , operating_password} , {client_account , client_password}};
+        }
+    }
+
+    public void add(String account , String password){
+        String path = "account.json";
+        try (BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path)))) {
+
+        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+        } catch (IOException e) {
+//            e.printStackTrace();
         }
     }
 }
